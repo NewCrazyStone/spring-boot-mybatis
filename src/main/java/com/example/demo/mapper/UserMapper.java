@@ -2,6 +2,13 @@ package com.example.demo.mapper;
 
 import com.example.demo.model.User;
 
+
+/**
+ * TODO UserMapper
+ *
+ * @author ChenWei
+ * @date 2018/7/12 15:15
+ */
 public interface UserMapper {
     int deleteByPrimaryKey(Integer userId);
 

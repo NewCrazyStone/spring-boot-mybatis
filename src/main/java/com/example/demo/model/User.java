@@ -1,5 +1,11 @@
 package com.example.demo.model;
 
+/**
+ * TODO User
+ *
+ * @author ChenWei
+ * @date 2018/7/12 15:15
+ */
 public class User {
     private Integer userId;
 
