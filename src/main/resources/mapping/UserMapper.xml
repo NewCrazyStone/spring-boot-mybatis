@@ -101,4 +101,6 @@
     <delete id="deleteUserById" parameterType="int">
         DELETE FROM t_user WHERE user_id = #{id};
     </delete>
+
+
 </mapper>

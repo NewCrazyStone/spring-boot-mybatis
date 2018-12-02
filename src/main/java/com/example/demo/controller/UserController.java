@@ -78,12 +78,21 @@ public class UserController {
         return listUser;
     }
 
+    /**
+     * 根据id更新数据库表
+     * @param user
+     */
     @RequestMapping(value = "/updateUser", method = RequestMethod.POST)
     @ResponseBody
     public void updateUser(User user){
         userService.updateUser(user);
     }
 
+    /**
+     * 根据id删除数据库表得信息
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/deleteUserById", method = RequestMethod.POST)
     @ResponseBody
     public int deleteUserById(int id){

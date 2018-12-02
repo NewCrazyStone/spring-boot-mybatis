@@ -79,4 +79,19 @@
       code = #{code,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="queryGoods" resultType="com.example.demo.model.Goods">
+    SELECT * FROM t_goods;
+  </select>
+  <update id="updateGoods" parameterType="com.example.demo.model.Goods">
+    UPDATE t_goods
+    SET name = #{name},type = #{type},code = #{code}
+    WHERE id = #{id};
+  </update>
+  <insert id="addGoods" parameterType="com.example.demo.model.Goods">
+    INSERT INTO t_goods(id,`name`, `type`,`code`)
+    VALUES (#{id},#{name},#{type},#{code});
+  </insert>
+  <delete id="deleteGoods" parameterType= "int">
+    delete FROM t_goods WHERE id = #{id};
+  </delete>
 </mapper>
