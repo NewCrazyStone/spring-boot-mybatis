@@ -1,0 +1,1335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CustomerMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.model.Customer">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="vip_card_code" jdbcType="VARCHAR" property="vipCardCode" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="e_mail" jdbcType="VARCHAR" property="eMail" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="post_code" jdbcType="VARCHAR" property="postCode" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="we_chat_id" jdbcType="VARCHAR" property="weChatId" />
+    <result column="job" jdbcType="VARCHAR" property="job" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="income" jdbcType="VARCHAR" property="income" />
+    <result column="id_type" jdbcType="VARCHAR" property="idType" />
+    <result column="id_code" jdbcType="VARCHAR" property="idCode" />
+    <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+    <result column="register_post" jdbcType="VARCHAR" property="registerPost" />
+    <result column="vip_point" jdbcType="VARCHAR" property="vipPoint" />
+    <result column="vip_pay" jdbcType="VARCHAR" property="vipPay" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="note_a" jdbcType="VARCHAR" property="noteA" />
+    <result column="note_b" jdbcType="VARCHAR" property="noteB" />
+    <result column="note_c" jdbcType="VARCHAR" property="noteC" />
+    <result column="note_d" jdbcType="VARCHAR" property="noteD" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="del_flag" jdbcType="BIT" property="delFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, name, vip_card_code, type, sex, birthday, e_mail, address, area, post_code, 
+    telephone, mobile_phone, we_chat_id, job, position, education, income, id_type, id_code, 
+    hobby, register_post, vip_point, vip_pay, note, note_a, note_b, note_c, note_d, source, 
+    create_by, update_by, create_time, update_time, del_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from customer
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.Customer">
+    insert into customer (id, code, name, 
+      vip_card_code, type, sex, 
+      birthday, e_mail, address, 
+      area, post_code, telephone, 
+      mobile_phone, we_chat_id, job, 
+      position, education, income, 
+      id_type, id_code, hobby, 
+      register_post, vip_point, vip_pay, 
+      note, note_a, note_b, 
+      note_c, note_d, source, 
+      create_by, update_by, create_time, 
+      update_time, del_flag)
+    values (#{id,jdbcType=CHAR}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{vipCardCode,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=TIMESTAMP}, #{eMail,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{area,jdbcType=VARCHAR}, #{postCode,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{mobilePhone,jdbcType=VARCHAR}, #{weChatId,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{income,jdbcType=VARCHAR}, 
+      #{idType,jdbcType=VARCHAR}, #{idCode,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR}, 
+      #{registerPost,jdbcType=VARCHAR}, #{vipPoint,jdbcType=VARCHAR}, #{vipPay,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR}, #{noteA,jdbcType=VARCHAR}, #{noteB,jdbcType=VARCHAR}, 
+      #{noteC,jdbcType=VARCHAR}, #{noteD,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.Customer">
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="vipCardCode != null">
+        vip_card_code,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="eMail != null">
+        e_mail,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="postCode != null">
+        post_code,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone,
+      </if>
+      <if test="weChatId != null">
+        we_chat_id,
+      </if>
+      <if test="job != null">
+        job,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="income != null">
+        income,
+      </if>
+      <if test="idType != null">
+        id_type,
+      </if>
+      <if test="idCode != null">
+        id_code,
+      </if>
+      <if test="hobby != null">
+        hobby,
+      </if>
+      <if test="registerPost != null">
+        register_post,
+      </if>
+      <if test="vipPoint != null">
+        vip_point,
+      </if>
+      <if test="vipPay != null">
+        vip_pay,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="noteA != null">
+        note_a,
+      </if>
+      <if test="noteB != null">
+        note_b,
+      </if>
+      <if test="noteC != null">
+        note_c,
+      </if>
+      <if test="noteD != null">
+        note_d,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="vipCardCode != null">
+        #{vipCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eMail != null">
+        #{eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null">
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="weChatId != null">
+        #{weChatId,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="income != null">
+        #{income,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="idCode != null">
+        #{idCode,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null">
+        #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="registerPost != null">
+        #{registerPost,jdbcType=VARCHAR},
+      </if>
+      <if test="vipPoint != null">
+        #{vipPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="vipPay != null">
+        #{vipPay,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="noteA != null">
+        #{noteA,jdbcType=VARCHAR},
+      </if>
+      <if test="noteB != null">
+        #{noteB,jdbcType=VARCHAR},
+      </if>
+      <if test="noteC != null">
+        #{noteC,jdbcType=VARCHAR},
+      </if>
+      <if test="noteD != null">
+        #{noteD,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.Customer">
+    update customer
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="vipCardCode != null">
+        vip_card_code = #{vipCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eMail != null">
+        e_mail = #{eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null">
+        post_code = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="weChatId != null">
+        we_chat_id = #{weChatId,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="income != null">
+        income = #{income,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        id_type = #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="idCode != null">
+        id_code = #{idCode,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null">
+        hobby = #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="registerPost != null">
+        register_post = #{registerPost,jdbcType=VARCHAR},
+      </if>
+      <if test="vipPoint != null">
+        vip_point = #{vipPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="vipPay != null">
+        vip_pay = #{vipPay,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="noteA != null">
+        note_a = #{noteA,jdbcType=VARCHAR},
+      </if>
+      <if test="noteB != null">
+        note_b = #{noteB,jdbcType=VARCHAR},
+      </if>
+      <if test="noteC != null">
+        note_c = #{noteC,jdbcType=VARCHAR},
+      </if>
+      <if test="noteD != null">
+        note_d = #{noteD,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.Customer">
+    update customer
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      vip_card_code = #{vipCardCode,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      e_mail = #{eMail,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      we_chat_id = #{weChatId,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      income = #{income,jdbcType=VARCHAR},
+      id_type = #{idType,jdbcType=VARCHAR},
+      id_code = #{idCode,jdbcType=VARCHAR},
+      hobby = #{hobby,jdbcType=VARCHAR},
+      register_post = #{registerPost,jdbcType=VARCHAR},
+      vip_point = #{vipPoint,jdbcType=VARCHAR},
+      vip_pay = #{vipPay,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      note_a = #{noteA,jdbcType=VARCHAR},
+      note_b = #{noteB,jdbcType=VARCHAR},
+      note_c = #{noteC,jdbcType=VARCHAR},
+      note_d = #{noteD,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      del_flag = #{delFlag,jdbcType=BIT}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.model.Customer">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="vip_card_code" jdbcType="VARCHAR" property="vipCardCode" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="e_mail" jdbcType="VARCHAR" property="eMail" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="post_code" jdbcType="VARCHAR" property="postCode" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="we_chat_id" jdbcType="VARCHAR" property="weChatId" />
+    <result column="job" jdbcType="VARCHAR" property="job" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="income" jdbcType="VARCHAR" property="income" />
+    <result column="id_type" jdbcType="VARCHAR" property="idType" />
+    <result column="id_code" jdbcType="VARCHAR" property="idCode" />
+    <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+    <result column="register_post" jdbcType="VARCHAR" property="registerPost" />
+    <result column="vip_point" jdbcType="VARCHAR" property="vipPoint" />
+    <result column="vip_pay" jdbcType="VARCHAR" property="vipPay" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="note_a" jdbcType="VARCHAR" property="noteA" />
+    <result column="note_b" jdbcType="VARCHAR" property="noteB" />
+    <result column="note_c" jdbcType="VARCHAR" property="noteC" />
+    <result column="note_d" jdbcType="VARCHAR" property="noteD" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="del_flag" jdbcType="BIT" property="delFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, name, vip_card_code, type, sex, birthday, e_mail, address, area, post_code, 
+    telephone, mobile_phone, we_chat_id, job, position, education, income, id_type, id_code, 
+    hobby, register_post, vip_point, vip_pay, note, note_a, note_b, note_c, note_d, source, 
+    create_by, update_by, create_time, update_time, del_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from customer
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.Customer">
+    insert into customer (id, code, name, 
+      vip_card_code, type, sex, 
+      birthday, e_mail, address, 
+      area, post_code, telephone, 
+      mobile_phone, we_chat_id, job, 
+      position, education, income, 
+      id_type, id_code, hobby, 
+      register_post, vip_point, vip_pay, 
+      note, note_a, note_b, 
+      note_c, note_d, source, 
+      create_by, update_by, create_time, 
+      update_time, del_flag)
+    values (#{id,jdbcType=CHAR}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{vipCardCode,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=TIMESTAMP}, #{eMail,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{area,jdbcType=VARCHAR}, #{postCode,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{mobilePhone,jdbcType=VARCHAR}, #{weChatId,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{income,jdbcType=VARCHAR}, 
+      #{idType,jdbcType=VARCHAR}, #{idCode,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR}, 
+      #{registerPost,jdbcType=VARCHAR}, #{vipPoint,jdbcType=VARCHAR}, #{vipPay,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR}, #{noteA,jdbcType=VARCHAR}, #{noteB,jdbcType=VARCHAR}, 
+      #{noteC,jdbcType=VARCHAR}, #{noteD,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.Customer">
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="vipCardCode != null">
+        vip_card_code,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="eMail != null">
+        e_mail,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="postCode != null">
+        post_code,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone,
+      </if>
+      <if test="weChatId != null">
+        we_chat_id,
+      </if>
+      <if test="job != null">
+        job,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="income != null">
+        income,
+      </if>
+      <if test="idType != null">
+        id_type,
+      </if>
+      <if test="idCode != null">
+        id_code,
+      </if>
+      <if test="hobby != null">
+        hobby,
+      </if>
+      <if test="registerPost != null">
+        register_post,
+      </if>
+      <if test="vipPoint != null">
+        vip_point,
+      </if>
+      <if test="vipPay != null">
+        vip_pay,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="noteA != null">
+        note_a,
+      </if>
+      <if test="noteB != null">
+        note_b,
+      </if>
+      <if test="noteC != null">
+        note_c,
+      </if>
+      <if test="noteD != null">
+        note_d,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="vipCardCode != null">
+        #{vipCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eMail != null">
+        #{eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null">
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="weChatId != null">
+        #{weChatId,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="income != null">
+        #{income,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="idCode != null">
+        #{idCode,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null">
+        #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="registerPost != null">
+        #{registerPost,jdbcType=VARCHAR},
+      </if>
+      <if test="vipPoint != null">
+        #{vipPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="vipPay != null">
+        #{vipPay,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="noteA != null">
+        #{noteA,jdbcType=VARCHAR},
+      </if>
+      <if test="noteB != null">
+        #{noteB,jdbcType=VARCHAR},
+      </if>
+      <if test="noteC != null">
+        #{noteC,jdbcType=VARCHAR},
+      </if>
+      <if test="noteD != null">
+        #{noteD,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.Customer">
+    update customer
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="vipCardCode != null">
+        vip_card_code = #{vipCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eMail != null">
+        e_mail = #{eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null">
+        post_code = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="weChatId != null">
+        we_chat_id = #{weChatId,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="income != null">
+        income = #{income,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        id_type = #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="idCode != null">
+        id_code = #{idCode,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null">
+        hobby = #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="registerPost != null">
+        register_post = #{registerPost,jdbcType=VARCHAR},
+      </if>
+      <if test="vipPoint != null">
+        vip_point = #{vipPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="vipPay != null">
+        vip_pay = #{vipPay,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="noteA != null">
+        note_a = #{noteA,jdbcType=VARCHAR},
+      </if>
+      <if test="noteB != null">
+        note_b = #{noteB,jdbcType=VARCHAR},
+      </if>
+      <if test="noteC != null">
+        note_c = #{noteC,jdbcType=VARCHAR},
+      </if>
+      <if test="noteD != null">
+        note_d = #{noteD,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.model.Customer">
+    update customer
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      vip_card_code = #{vipCardCode,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      e_mail = #{eMail,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      we_chat_id = #{weChatId,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      income = #{income,jdbcType=VARCHAR},
+      id_type = #{idType,jdbcType=VARCHAR},
+      id_code = #{idCode,jdbcType=VARCHAR},
+      hobby = #{hobby,jdbcType=VARCHAR},
+      register_post = #{registerPost,jdbcType=VARCHAR},
+      vip_point = #{vipPoint,jdbcType=VARCHAR},
+      vip_pay = #{vipPay,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      note_a = #{noteA,jdbcType=VARCHAR},
+      note_b = #{noteB,jdbcType=VARCHAR},
+      note_c = #{noteC,jdbcType=VARCHAR},
+      note_d = #{noteD,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      del_flag = #{delFlag,jdbcType=BIT}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.demo.model.Customer">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="vip_card_code" jdbcType="VARCHAR" property="vipCardCode" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="e_mail" jdbcType="VARCHAR" property="eMail" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="area" jdbcType="VARCHAR" property="area" />
+    <result column="post_code" jdbcType="VARCHAR" property="postCode" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="mobile_phone" jdbcType="VARCHAR" property="mobilePhone" />
+    <result column="we_chat_id" jdbcType="VARCHAR" property="weChatId" />
+    <result column="job" jdbcType="VARCHAR" property="job" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="income" jdbcType="VARCHAR" property="income" />
+    <result column="id_type" jdbcType="VARCHAR" property="idType" />
+    <result column="id_code" jdbcType="VARCHAR" property="idCode" />
+    <result column="hobby" jdbcType="VARCHAR" property="hobby" />
+    <result column="register_post" jdbcType="VARCHAR" property="registerPost" />
+    <result column="vip_point" jdbcType="VARCHAR" property="vipPoint" />
+    <result column="vip_pay" jdbcType="VARCHAR" property="vipPay" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+    <result column="note_a" jdbcType="VARCHAR" property="noteA" />
+    <result column="note_b" jdbcType="VARCHAR" property="noteB" />
+    <result column="note_c" jdbcType="VARCHAR" property="noteC" />
+    <result column="note_d" jdbcType="VARCHAR" property="noteD" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="del_flag" jdbcType="BIT" property="delFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, code, name, vip_card_code, type, sex, birthday, e_mail, address, area, post_code, 
+    telephone, mobile_phone, we_chat_id, job, position, education, income, id_type, id_code, 
+    hobby, register_post, vip_point, vip_pay, note, note_a, note_b, note_c, note_d, source, 
+    create_by, update_by, create_time, update_time, del_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from customer
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.model.Customer">
+    insert into customer (id, code, name, 
+      vip_card_code, type, sex, 
+      birthday, e_mail, address, 
+      area, post_code, telephone, 
+      mobile_phone, we_chat_id, job, 
+      position, education, income, 
+      id_type, id_code, hobby, 
+      register_post, vip_point, vip_pay, 
+      note, note_a, note_b, 
+      note_c, note_d, source, 
+      create_by, update_by, create_time, 
+      update_time, del_flag)
+    values (#{id,jdbcType=CHAR}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{vipCardCode,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, #{sex,jdbcType=VARCHAR}, 
+      #{birthday,jdbcType=TIMESTAMP}, #{eMail,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{area,jdbcType=VARCHAR}, #{postCode,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{mobilePhone,jdbcType=VARCHAR}, #{weChatId,jdbcType=VARCHAR}, #{job,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{income,jdbcType=VARCHAR}, 
+      #{idType,jdbcType=VARCHAR}, #{idCode,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR}, 
+      #{registerPost,jdbcType=VARCHAR}, #{vipPoint,jdbcType=VARCHAR}, #{vipPay,jdbcType=VARCHAR}, 
+      #{note,jdbcType=VARCHAR}, #{noteA,jdbcType=VARCHAR}, #{noteB,jdbcType=VARCHAR}, 
+      #{noteC,jdbcType=VARCHAR}, #{noteD,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, 
+      #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.model.Customer">
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="vipCardCode != null">
+        vip_card_code,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="eMail != null">
+        e_mail,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="area != null">
+        area,
+      </if>
+      <if test="postCode != null">
+        post_code,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone,
+      </if>
+      <if test="weChatId != null">
+        we_chat_id,
+      </if>
+      <if test="job != null">
+        job,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="income != null">
+        income,
+      </if>
+      <if test="idType != null">
+        id_type,
+      </if>
+      <if test="idCode != null">
+        id_code,
+      </if>
+      <if test="hobby != null">
+        hobby,
+      </if>
+      <if test="registerPost != null">
+        register_post,
+      </if>
+      <if test="vipPoint != null">
+        vip_point,
+      </if>
+      <if test="vipPay != null">
+        vip_pay,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+      <if test="noteA != null">
+        note_a,
+      </if>
+      <if test="noteB != null">
+        note_b,
+      </if>
+      <if test="noteC != null">
+        note_c,
+      </if>
+      <if test="noteD != null">
+        note_d,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="vipCardCode != null">
+        #{vipCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eMail != null">
+        #{eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null">
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="weChatId != null">
+        #{weChatId,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="income != null">
+        #{income,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="idCode != null">
+        #{idCode,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null">
+        #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="registerPost != null">
+        #{registerPost,jdbcType=VARCHAR},
+      </if>
+      <if test="vipPoint != null">
+        #{vipPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="vipPay != null">
+        #{vipPay,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="noteA != null">
+        #{noteA,jdbcType=VARCHAR},
+      </if>
+      <if test="noteB != null">
+        #{noteB,jdbcType=VARCHAR},
+      </if>
+      <if test="noteC != null">
+        #{noteC,jdbcType=VARCHAR},
+      </if>
+      <if test="noteD != null">
+        #{noteD,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.Customer">
+    update customer
+    <set>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="vipCardCode != null">
+        vip_card_code = #{vipCardCode,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eMail != null">
+        e_mail = #{eMail,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        area = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null">
+        post_code = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobilePhone != null">
+        mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="weChatId != null">
+        we_chat_id = #{weChatId,jdbcType=VARCHAR},
+      </if>
+      <if test="job != null">
+        job = #{job,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="income != null">
+        income = #{income,jdbcType=VARCHAR},
+      </if>
+      <if test="idType != null">
+        id_type = #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="idCode != null">
+        id_code = #{idCode,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null">
+        hobby = #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="registerPost != null">
+        register_post = #{registerPost,jdbcType=VARCHAR},
+      </if>
+      <if test="vipPoint != null">
+        vip_point = #{vipPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="vipPay != null">
+        vip_pay = #{vipPay,jdbcType=VARCHAR},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+      <if test="noteA != null">
+        note_a = #{noteA,jdbcType=VARCHAR},
+      </if>
+      <if test="noteB != null">
+        note_b = #{noteB,jdbcType=VARCHAR},
+      </if>
+      <if test="noteC != null">
+        note_c = #{noteC,jdbcType=VARCHAR},
+      </if>
+      <if test="noteD != null">
+        note_d = #{noteD,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateBy != null">
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cC">
+    update customer
+    set code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      vip_card_code = #{vipCardCode,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      e_mail = #{eMail,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      area = #{area,jdbcType=VARCHAR},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      mobile_phone = #{mobilePhone,jdbcType=VARCHAR},
+      we_chat_id = #{weChatId,jdbcType=VARCHAR},
+      job = #{job,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      income = #{income,jdbcType=VARCHAR},
+      id_type = #{idType,jdbcType=VARCHAR},
+      id_code = #{idCode,jdbcType=VARCHAR},
+      hobby = #{hobby,jdbcType=VARCHAR},
+      register_post = #{registerPost,jdbcType=VARCHAR},
+      vip_point = #{vipPoint,jdbcType=VARCHAR},
+      vip_pay = #{vipPay,jdbcType=VARCHAR},
+      note = #{note,jdbcType=VARCHAR},
+      note_a = #{noteA,jdbcType=VARCHAR},
+      note_b = #{noteB,jdbcType=VARCHAR},
+      note_c = #{noteC,jdbcType=VARCHAR},
+      note_d = #{noteD,jdbcType=VARCHAR},
+      source = #{source,jdbcType=VARCHAR},
+      create_by = #{createBy,jdbcType=VARCHAR},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      del_flag = #{delFlag,jdbcType=BIT}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+
+  <!--&amp;lt;insert id="addCustomer" parameterType="com.example.demo.model.Customer"&amp;gt;-->
+    <!--INSERT INTO customer(id,`code`,`name`)-->
+    <!--VALUES(#{id},#{code},#{name})-->
+  <!--&amp;lt;/insert&amp;gt;-->
+</mapper>

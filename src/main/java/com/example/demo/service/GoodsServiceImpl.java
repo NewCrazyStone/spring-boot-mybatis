@@ -26,6 +26,7 @@ public class GoodsServiceImpl implements GoodsService {
         return count;
     }
 
+
     @Override
     public List<Goods> queryGoods() {
         List<Goods> listGoods = goodsMapper.queryGoods();
